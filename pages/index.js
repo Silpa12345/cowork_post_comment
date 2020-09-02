@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import NavBar from './components/NavBar';
 import Layout from './components/layout';
 
 const Welcome = styled.div`
