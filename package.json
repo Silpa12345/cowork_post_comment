@@ -1,22 +1,19 @@
 {
-     "name": "example-frontend-next-js",
-     "description": "Sanity + Next.js frontend example",
+     "name": "dummy_app",
+     "version": "0.1.0",
      "private": true,
-     "dependencies": {
-          "@sanity/block-content-to-react": "^1.3.12",
-          "@sanity/client": "^0.132.10",
-          "@sanity/image-url": "^0.132.8",
-          "bootstrap": "^4.5.2",
-          "next": "^9.3.1",
-          "react": "^16.13.0",
-          "react-bootstrap": "^1.3.0",
-          "react-dom": "^16.13.0",
-          "styled-components": "^5.1.1",
-          "swr": "^0.3.1"
-     },
      "scripts": {
           "dev": "next -p 3001",
           "build": "next build",
           "start": "next start"
+     },
+     "dependencies": {
+          "bootstrap": "^4.5.2",
+          "next": "9.5.2",
+          "react": "16.13.1",
+          "react-bootstrap": "^1.3.0",
+          "react-dom": "16.13.1",
+          "styled-components": "^5.1.1",
+          "swr": "^0.3.1"
      }
 }

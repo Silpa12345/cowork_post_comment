@@ -20,19 +20,43 @@ const Content = styled(PostStyle)`
      border: none;
 `;
 
+const postEndpoint = 'https://jsonplaceholder.typicode.com/posts';
 const commentEndpoint = 'https://jsonplaceholder.typicode.com/comments';
 
-const CommentData = (props, fetcherData) => {
+export async function getStaticPaths() {
+     const res = await fetch(postEndpoint);
+     const posts = await res.json();
+
+     const paths = posts.map((post) => ({
+          params: { id: post.id.toString() },
+     }));
+
+     return { paths, fallback: false };
+}
+
+// This also gets called at build time
+export async function getStaticProps({ params }) {
+     // params contains the post `id`.
+     // If the route is like /posts/1, then params.id is 1
+     const res = await fetch(commentEndpoint);
+     const data = await res.json();
+
+     // Pass post data to the page via props
+     return { props: { data } };
+}
+
+const CommentData = ({ data }) => {
      // const postId = 2;
 
-     const [comments, setComments] = useState();
-     const { data } = useSWR(commentEndpoint, fetcher);
+     //const [comments, setComments] = useState();
+     //const { data } = useSWR(commentEndpoint, fetcher);
 
      const router = useRouter();
      const { id } = router.query;
 
      return (
           <>
+               <div>Comment</div>
                <Header />
                <div>
                     {data &&
@@ -40,6 +64,8 @@ const CommentData = (props, fetcherData) => {
                               .filter((post) => post.postId == id)
                               .map((po) => (
                                    <PostStyle key={po.id}>
+                                        <Content>CommentID:{po.id}</Content>
+
                                         <Content>PostID:{po.postId}</Content>
 
                                         <Content>Name:{po.name}</Content>
