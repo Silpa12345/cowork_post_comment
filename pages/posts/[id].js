@@ -34,23 +34,14 @@ export async function getStaticPaths() {
      return { paths, fallback: false };
 }
 
-// This also gets called at build time
 export async function getStaticProps({ params }) {
-     // params contains the post `id`.
-     // If the route is like /posts/1, then params.id is 1
      const res = await fetch(`${postEndpoint}/${params.id}`);
      const post = await res.json();
 
-     // Pass post data to the page via props
      return { props: { post } };
 }
 
 const CommentData = ({ post }) => {
-     // const postId = 2;
-
-     //const [comments, setComments] = useState();
-     //const { data } = useSWR(commentEndpoint, fetcher);
-
      const router = useRouter();
      const { id } = router.query;
 
