@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import styled from 'styled-components';
 
@@ -41,8 +40,9 @@ export async function getStaticProps({ params }) {
      return { props: { data } };
 }
 
-const CommentData = ({ data }) => {
-     //const { data } = useSWR(commentEndpoint, fetcher);
+const CommentData = (props) => {
+     const initialData = props.data;
+     const { data } = useSWR(commentEndpoint, fetcher, { initialData });
 
      const router = useRouter();
      const { id } = router.query;

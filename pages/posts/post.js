@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import Layout from '../components/layout';
 import fetcher from '../../lib/fetcher';
+import useSWR from 'swr';
 
 const PostStyle = styled.div`
      display: flex;
@@ -27,8 +28,9 @@ export async function getStaticProps() {
      };
 }
 
-const PostData = ({ data }) => {
-     //const { data } = useSWR(postEndpoint, fetcher);
+const PostData = (props) => {
+     const initialData = props.data;
+     const { data } = useSWR(postEndpoint, fetcher, { initialData });
 
      return (
           <Layout>

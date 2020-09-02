@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Link from 'next/link';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+
 import Layout from '../components/layout';
 
 const PostStyle = styled.div`
@@ -40,9 +40,6 @@ export async function getStaticProps({ params }) {
 }
 
 const CommentData = ({ post }) => {
-     const router = useRouter();
-     const { id } = router.query;
-
      return (
           <Layout>
                <Head>
