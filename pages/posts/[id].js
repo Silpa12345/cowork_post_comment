@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Link from 'next/link';
-
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Layout from '../components/layout';
 
@@ -45,6 +45,9 @@ const CommentData = ({ post }) => {
 
      return (
           <Layout>
+               <Head>
+                    <title>{post.title}</title>
+               </Head>
                <h4>Post</h4>
                <div>
                     {post && (
