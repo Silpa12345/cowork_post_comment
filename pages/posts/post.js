@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import useSWR from 'swr';
 import styled from 'styled-components';
 import Link from 'next/link';
-import Header from '../layouts/Header';
+import Layout from '../components/layout';
 import fetcher from '../../lib/fetcher';
 
 const PostStyle = styled.div`
@@ -33,8 +31,7 @@ const PostData = ({ data }) => {
      //const { data } = useSWR(postEndpoint, fetcher);
 
      return (
-          <>
-               <Header></Header>
+          <Layout>
                <h1>POSTS</h1>
                <div>
                     {data &&
@@ -50,11 +47,10 @@ const PostData = ({ data }) => {
                                              <a>{post.title}</a>
                                         </Link>
                                    </Content>
-                                   <Content>Body:{post.body}</Content>
                               </PostStyle>
                          ))}
                </div>
-          </>
+          </Layout>
      );
 };
 

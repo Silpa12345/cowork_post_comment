@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import useSWR from 'swr';
 import styled from 'styled-components';
 import Link from 'next/link';
-import Header from '../layouts/Header';
-import fetcher from '../../lib/fetcher';
+
 import { useRouter } from 'next/router';
+import Layout from '../components/layout';
 
 const PostStyle = styled.div`
      display: flex;
@@ -46,9 +44,8 @@ const CommentData = ({ post }) => {
      const { id } = router.query;
 
      return (
-          <>
-               <Header />
-               <div>Post</div>
+          <Layout>
+               <h4>Post</h4>
                <div>
                     {post && (
                          <PostStyle key={post.id}>
@@ -70,7 +67,7 @@ const CommentData = ({ post }) => {
                          </PostStyle>
                     )}
                </div>
-          </>
+          </Layout>
      );
 };
 

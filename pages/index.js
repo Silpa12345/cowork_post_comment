@@ -1,10 +1,6 @@
-import Head from 'next/head';
-//import styles from '../styles/Home.module.css';
 import styled from 'styled-components';
-import Header from './layouts/Header';
-//import Navigate from './layouts/Navigate';
-
-//import PostData from './api/Postfetch';
+import NavBar from './components/NavBar';
+import Layout from './components/layout';
 
 const Welcome = styled.div`
      display: flex;
@@ -17,20 +13,11 @@ const Welcome = styled.div`
 
 export default function Home() {
      return (
-          <div>
-               <Head>
-                    <title>Dummy App</title>
-                    <link rel="icon" href="/favicon.ico" />
-                    <meta
-                         name="viewport"
-                         content="initial-scale=1.0, width=device-width"
-                    />
-               </Head>
-               <Header />
+          <Layout>
                <Welcome>
                     <h1>Welcome to COWORK</h1>
                     <p>Post your thoughts here!!!</p>
                </Welcome>
-          </div>
+          </Layout>
      );
 }
